@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const Turtle = require('./models/Turtle');
 const turtleSeed = require('./models/turtleSeed');
 
@@ -25,6 +26,7 @@ mongoose.connection
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cors());
 
 // Home Route
 app.get('/', (req, res) => {
