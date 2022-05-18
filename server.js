@@ -3,12 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Turtle = require('./models/Turtle');
 const turtleSeed = require('./models/turtleSeed');
 
 // Create the application object
 const app = express();
-// Destructure mongoose for Schema/model
-const { Schema, model } = mongoose;
 
 // Create the DB connection
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -22,13 +21,6 @@ mongoose.connection
   .on('open', () => console.log('Connected to database!'))
   .on('close', () => console.log('Disconnected from database!'))
   .on('error', (err) => console.log(err));
-
-// Create the data schema
-const turtleSchema = new Schema({
-  name: String,
-  role: String,
-});
-const Turtle = model('Turtle', turtleSchema);
 
 // Middleware
 app.use(express.json());
