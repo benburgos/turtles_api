@@ -36,7 +36,7 @@ app.use(morgan('dev'));
 
 // Home Route
 app.get('/', (req, res) => {
-  res.json({ response: 'I like turtles!' });
+  res.redirect('/turtles');
 });
 
 // INDUCES
